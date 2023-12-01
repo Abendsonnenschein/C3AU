@@ -88,6 +88,11 @@ function selectDestination(name) {
   return false;
 }
 
+function isEmpty(index) {
+  let mod = headers[index].parentElement.parentElement;
+  return mod.children[2].children[0].children.length === 0;
+}
+
 function moveAll() {
   let startIndex = indexOf("START HERE", 1);
 
@@ -98,12 +103,18 @@ function moveAll() {
   for (let i = startIndex; i < headers.length; i++) {
     let name = headers[i].title;
 
+    if (isEmpty(i)) {
+      continue;
+    }
+
     openMenu(name, startIndex);
     openMove();
 
-    if (selectDestination(name)) {
-      document.querySelector("#move-item-tray-submit-button").click();
+    if (!selectDestination(name)) {
+      continue;
     }
+
+    document.querySelector("#move-item-tray-submit-button").click();
   }
 }
 
@@ -119,6 +130,3 @@ function addButton() {
 }
 
 addButton();
-
-// To check if module is empty: headers[index].parentElement.parentElement.children.length <= 2
-// TODO: If a module is empty, we will get stuck on it! Need to check for this edge case first
