@@ -11,9 +11,9 @@
 // @grant        none
 // ==/UserScript==
 
-const headers = document.querySelectorAll(".collapse_module_link");
-
 function indexOf(name, skip) {
+  let headers = document.querySelectorAll(".collapse_module_link");
+
   for (let i = skip; i < headers.length; i++) {
     if (headers[i].title === name) {
       return i;
@@ -26,6 +26,7 @@ function indexOf(name, skip) {
 // Click on the three vertical dots
 
 function openMenu(name, skip) {
+  let headers = document.querySelectorAll(".collapse_module_link");
   let idx = indexOf(name, skip);
   let hpe = headers[idx].parentElement;
 
@@ -89,12 +90,14 @@ function selectDestination(name) {
 }
 
 function isEmpty(index) {
+  let headers = document.querySelectorAll(".collapse_module_link");
   let mod = headers[index].parentElement.parentElement;
   return mod.children[2].children[0].children.length === 0;
 }
 
 function moveAll() {
   let startIndex = indexOf("START HERE", 1);
+  let headers = document.querySelectorAll(".collapse_module_link");
 
   if (startIndex === -1) {
     return;

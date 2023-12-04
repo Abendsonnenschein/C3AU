@@ -11,39 +11,9 @@
 // @grant        none
 // ==/UserScript==
 
-const datesB = {
-  "Week 1": "*March 4 - 10*",
-  "Week 2": "*March 11 - 17*",
-  "Week 3": "*March 25 - 31*",
-  "Week 4": "*April 1 - 7*",
-  "Week 5": "*April 8 - 14*",
-  "Week 6": "*April 15 - 21*",
-  "Week 7": "*April 22 - 28*",
-  "Week 8": "*April 29 - May 5*",
-};
-
-const datesF = {
-  "Week 1": "*January 8 - 14*",
-  "Week 2": "*January 15 - 21*",
-  "Week 3": "*January 22 - 28*",
-  "Week 4": "*January 29 - February 4*",
-  "Week 5": "*February 5 - 11*",
-  "Week 6": "*February 12 - 18*",
-  "Week 7": "*February 19 - 25*",
-  "Week 8": "*February 26 - March 3*",
-  "Week 9": "*March 4 - 10*",
-  "Week 10": "*March 11 - 17*",
-  "Week 11": "*March 25 - 31*",
-  "Week 12": "*April 1 - 7*",
-  "Week 13": "*April 8 - 14*",
-  "Week 14": "*April 15 - 21*",
-  "Week 15": "*April 22 - 28*",
-  "Week 16": "*April 29 - May 5*",
-};
-
-const headers = document.querySelectorAll(".collapse_module_link");
-
 function indexOf(name, skip) {
+  let headers = document.querySelectorAll(".collapse_module_link");
+
   for (let i = skip; i < headers.length; i++) {
     if (headers[i].title === name) {
       return i;
@@ -73,6 +43,7 @@ function submitAdd() {
 // Click on the plus sign
 
 function openMenu(name, skip) {
+  let headers = document.querySelectorAll(".collapse_module_link");
   let idx = indexOf(name, skip);
   let hpe = headers[idx].parentElement;
 
@@ -91,6 +62,7 @@ function openMenu(name, skip) {
 
 function addDates(dateSet) {
   let endIndex = indexOf("START HERE", 1);
+  let headers = document.querySelectorAll(".collapse_module_link");
 
   if (endIndex === -1) {
     return;
@@ -111,6 +83,36 @@ function addDates(dateSet) {
 
 function addDatePrompt() {
   let isB = confirm("Is this course 7B/8B?\nCancel = No, OK = Yes");
+
+  let datesB = {
+    "Week 1": "*March 4 - 10*",
+    "Week 2": "*March 11 - 17*",
+    "Week 3": "*March 25 - 31*",
+    "Week 4": "*April 1 - 7*",
+    "Week 5": "*April 8 - 14*",
+    "Week 6": "*April 15 - 21*",
+    "Week 7": "*April 22 - 28*",
+    "Week 8": "*April 29 - May 5*",
+  };
+
+  let datesF = {
+    "Week 1": "*January 8 - 14*",
+    "Week 2": "*January 15 - 21*",
+    "Week 3": "*January 22 - 28*",
+    "Week 4": "*January 29 - February 4*",
+    "Week 5": "*February 5 - 11*",
+    "Week 6": "*February 12 - 18*",
+    "Week 7": "*February 19 - 25*",
+    "Week 8": "*February 26 - March 3*",
+    "Week 9": "*March 4 - 10*",
+    "Week 10": "*March 11 - 17*",
+    "Week 11": "*March 25 - 31*",
+    "Week 12": "*April 1 - 7*",
+    "Week 13": "*April 8 - 14*",
+    "Week 14": "*April 15 - 21*",
+    "Week 15": "*April 22 - 28*",
+    "Week 16": "*April 29 - May 5*",
+  };
 
   if (isB) {
     addDates(datesB);
